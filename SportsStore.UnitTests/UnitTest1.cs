@@ -6,6 +6,7 @@ using Moq;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 using SportsStore.WebUI.Controllers;
+using SportsStore.WebUI.Models;
 
 namespace SportsStore.UnitTests
 {
@@ -25,13 +26,16 @@ namespace SportsStore.UnitTests
                 new Product {ProductID = 4, Name = "P4"},
                 new Product {ProductID = 5, Name = "P5"},
             });
+
+            //Arrane
             ProductController controller = new ProductController(mock.Object);
             controller.PageSize = 3;
+
             // Act
-            IEnumerable<Product> result =
-                (IEnumerable<Product>)controller.List(2).Model;
+            ProductListViewModel result = (ProductListViewModel)controller.List(2).Model;
+
             // Assert
-            Product[] prodArray = result.ToArray();
+            Product[] prodArray = result.Products.ToArray();
             Assert.IsTrue(prodArray.Length == 2);
             Assert.AreEqual(prodArray[0].Name, "P4");
             Assert.AreEqual(prodArray[1].Name, "P5");
