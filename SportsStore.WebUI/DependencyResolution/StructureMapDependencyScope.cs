@@ -26,6 +26,7 @@ namespace SportsStore.WebUI.DependencyResolution
     using StructureMap;
     using SportsStore.Domain.Abstract;
     using SportsStore.Domain.Entities;
+    using System.Configuration;
 
     /// <summary>
     /// The structure map dependency scope.
@@ -138,5 +139,6 @@ namespace SportsStore.WebUI.DependencyResolution
         }
 
         #endregion
+          
     }
 }
